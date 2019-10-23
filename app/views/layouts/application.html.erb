@@ -17,9 +17,17 @@
     <a class="p-2 text-dark" href="<%= home_path %>">Home</a>
     <a class="p-2 text-dark" href="<%= about_path %>">About</a>
     <a class="p-2 text-dark" href="<%= new_post_path %>">Create Post</a>
-  </nav>
-  <a class="btn btn-outline-primary" href="#">Sign in</a>
+
+        <% if @current_user == nil %>
+              <%= link_to "Sign Up", signup_path, class: "item" %>
+              <%= link_to "Login", login_path, class: "item" %>
+            <% else %>
+              Welcome, <%= @current_user.username %>!
+              <%= link_to "Logout", "/logout", method: :delete, class: "item" %>
+            <% end %>
 </div>
+
+  </nav>
 
 
 
